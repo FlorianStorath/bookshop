@@ -37,8 +37,8 @@ public class BooksSearchServlet extends HttpServlet {
 			Collection<Book> suchErgebnisse = books.stream()
 					.filter(fz -> fz.getAuthor().toLowerCase().contains(suchtext.toLowerCase()))
 					.collect(Collectors.toList());
-			request.setAttribute("fz", suchErgebnisse);
-			request.getRequestDispatcher("/displayFahrzeuge.jsp").forward(request, response);
+			request.setAttribute("books", suchErgebnisse);
+			request.getRequestDispatcher("/searchresponse.jsp").forward(request, response);
 		}
 
 	}
