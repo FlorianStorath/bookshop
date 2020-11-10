@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import bookshop.control.BooksData;
 import bookshop.entity.Book;
-import sample.Fahrzeug;
 
 /**
  * Servlet implementation class BooksSearchServlet

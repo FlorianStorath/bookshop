@@ -22,7 +22,7 @@ public class BooksDisplayServlet extends HttpServlet {
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		Collection<Book> books = BooksData.getInstance().getBooks();
 		request.setAttribute("books", books);
-		request.getRequestDispatcher("displayBooks.jsp")
+		request.getRequestDispatcher("/displayData.jsp")
 			.forward(request, response);
 		
 	}
