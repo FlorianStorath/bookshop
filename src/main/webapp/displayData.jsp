@@ -16,7 +16,7 @@
 		<c:forEach items="${books}" var="b">
 			<li>
 			<c:if test="${!merkenFormDisabled}">
-					<input type="checkbox" name="id" value="${f.id}">
+					<input type="checkbox" name="id" value="${b.id}">
 				</c:if>
 			<c:out value="${b.title}, ${b.author}, ${b.year}"/></li>
 		</c:forEach>
