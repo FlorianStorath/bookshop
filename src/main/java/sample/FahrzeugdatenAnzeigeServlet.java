@@ -18,7 +18,7 @@ public class FahrzeugdatenAnzeigeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// Logik, z.B. DB-Zugriff o.Ä.
-		
+		System.out.println("Test++++++++++++++++++++++++++++++");
 		Collection<Fahrzeug> fahrzeuge = new LinkedList<>();
 		fahrzeuge.add(new Fahrzeug("Ford", 2010));
 		fahrzeuge.add(new Fahrzeug("Opel", 2018));
