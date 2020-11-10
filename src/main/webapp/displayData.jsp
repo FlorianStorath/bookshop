@@ -11,9 +11,18 @@
 </head>
 <body>
 <ul>
+<h1><c:out value="${empty pageTitle ? 'Anzeige von Büchern' : pageTitle}"/></h1>
+	<form action="merken" method="post">
 		<c:forEach items="${books}" var="b">
-			<li><c:out value="${b.title}, ${b.author}, ${b.year}"/></li>
+			<li>
+			<c:if test="${!merkenFormDisabled}">
+					<input type="checkbox" name="id" value="${f.id}">
+				</c:if>
+			<c:out value="${b.title}, ${b.author}, ${b.year}"/></li>
 		</c:forEach>
 	</ul>
+	<c:if test="${!merkenFormDisabled}">
+		<input type="submit" value="Markierte Bücher in Warenkorb ablegen">
+	</c:if>
 </body>
 </html>

@@ -13,10 +13,10 @@ public class BooksData {
 	// nur 1 Bestand in der Anwendung -> Singleton
 
 	private BooksData() {
-		books.add(new Book("Frankenstein","Mary Shelley",2010));
-		books.add(new Book("Shining","Stephen King", 2018));
-		books.add(new Book("Funkenmord", "Klüpfel",2020));
-		books.add(new Book("Goldstein","Volker Kutscher",2015));
+		books.add(new Book(1,"Frankenstein","Mary Shelley",2010));
+		books.add(new Book(2,"Shining","Stephen King", 2018));
+		books.add(new Book(3,"Funkenmord", "Klüpfel",2020));
+		books.add(new Book(4,"Goldstein","Volker Kutscher",2015));
 	}
 
 	public Collection<Book> getBooks() {
