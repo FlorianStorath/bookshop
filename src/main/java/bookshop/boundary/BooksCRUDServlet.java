@@ -28,7 +28,7 @@ public class BooksCRUDServlet extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		int year = Integer.parseInt(request.getParameter("year"));
 		BooksData.getInstance().add(new Book(id,title,author,year));
-		//response.sendRedirect("http://localhost:8080/sample-0.0.1-SNAPSHOT/books");
+		response.sendRedirect("books");
 //       try(PrintWriter out = response.getWriter()) {
 //			out.println("Datensatz angelegt!");
 //				};
