@@ -2,6 +2,7 @@ package bookshop.boundary;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collection;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,7 +28,8 @@ public class BooksCRUDServlet extends HttpServlet {
 		String author = request.getParameter("author");
 		int id = Integer.parseInt(request.getParameter("id"));
 		int year = Integer.parseInt(request.getParameter("year"));
-		BooksData.getInstance().add(new Book(id,title,author,year));
+		Collection<Book> liste = (Collection<Book>) getServletContext().getAttribute("buchliste");
+		liste.add(new Book(id,title,author,year));
 		response.sendRedirect("books");
 //       try(PrintWriter out = response.getWriter()) {
 //			out.println("Datensatz angelegt!");
