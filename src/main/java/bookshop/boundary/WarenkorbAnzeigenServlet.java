@@ -36,14 +36,8 @@ public class WarenkorbAnzeigenServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Logik, z.B. DB-Zugriff o.Ä.
 
-				Collection<Book> merkliste = null;
-
-				HttpSession session = request.getSession(false); // nicht anlegen, falls nicht vorhanden
-				if (null != session) {
-					merkliste = (Collection<Book>) session.getAttribute("merkliste");
-				}
-
-				request.setAttribute("books", merkliste); // null ist okay
+				
+				request.setAttribute("books", merkliste.getBooks()); // null ist okay
 				request.setAttribute("pageTitle", "Merkliste");
 				request.setAttribute("merkenFormDisabled", true);
 				request.getRequestDispatcher("/displayData.jsp").forward(request, response);
