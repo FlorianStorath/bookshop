@@ -8,6 +8,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bookshop.control.BooksData;
+import bookshop.control.Merkliste;
 import bookshop.entity.Book;
 
 /**
@@ -24,7 +26,10 @@ import bookshop.entity.Book;
 @WebServlet("/merken")
 public class WarenKorbServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	@Inject
+	private BooksData booksData;
+	@Inject
+	private Merkliste merkliste;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -46,22 +51,11 @@ public class WarenKorbServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String[] ids = request.getParameterValues("id");
 		if(null != ids && ids.length>0) {
-			
-			HttpSession session = request.getSession();
-			Collection<Book> merkliste;
-			synchronized (session) { // parallele Zugriffe auf dieselbe Session -> Thread Safety
-				merkliste = (Collection<Book>) session.getAttribute("merkliste");
-				if(null == merkliste) {
-					merkliste = new TreeSet<>(Comparator.comparing(Book::getId)); // keine Duplikate, Sortierung nach ID
-					session.setAttribute("merkliste", merkliste);
-				}
-			}
-			// ID-Parameter als Integer
-			System.out.print("bis hierher");
+					
 			Set<Integer> idSet = Arrays.stream(ids).map(Integer::valueOf).collect(Collectors.toSet());
-			Collection<Book> bestand = BooksData.getInstance().getBooks();
+			Collection<Book> bestand = booksData.getBooks();
 			// alles aus bestand, dessen ID in idSet (=Parameter) zu finden ist, wird in die Merkliste gepackt.
-			bestand.stream().filter(f -> idSet.contains(f.getId())).forEach(merkliste::add);
+			bestand.stream().filter(f -> idSet.contains(f.getId())).forEach(merkliste.getBooks()::add);
 		}
 		
 		// Anzeige der Merkliste

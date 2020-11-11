@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collection;
 
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +21,8 @@ import bookshop.entity.Book;
 @WebServlet("/createData")
 public class BooksCRUDServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+     @Inject
+     private BooksData booksData;
     
     @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,8 +30,7 @@ public class BooksCRUDServlet extends HttpServlet {
 		String author = request.getParameter("author");
 		int id = Integer.parseInt(request.getParameter("id"));
 		int year = Integer.parseInt(request.getParameter("year"));
-		Collection<Book> liste = (Collection<Book>) getServletContext().getAttribute("buchliste");
-		liste.add(new Book(id,title,author,year));
+		booksData.add(new Book(id,title,author,year));
 		response.sendRedirect("books");
 //       try(PrintWriter out = response.getWriter()) {
 //			out.println("Datensatz angelegt!");

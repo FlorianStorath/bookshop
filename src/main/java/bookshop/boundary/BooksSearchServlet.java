@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +20,8 @@ import bookshop.entity.Book;
 @WebServlet("/booksearch")
 public class BooksSearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	@Inject
+	private BooksData booksData;
        
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -32,7 +35,7 @@ public class BooksSearchServlet extends HttpServlet {
 
 			// Logik, z.B. DB-Zugriff o.Ä.
 
-			Collection<Book> books = BooksData.getInstance().getBooks();
+			Collection<Book> books = booksData.getBooks();
 			Collection<Book> suchErgebnisse = books.stream()
 					.filter(fz -> fz.getAuthor().toLowerCase().contains(suchtext.toLowerCase()))
 					.collect(Collectors.toList());
