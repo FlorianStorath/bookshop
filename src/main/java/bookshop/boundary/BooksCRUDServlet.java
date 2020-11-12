@@ -8,6 +8,8 @@ import java.util.Set;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.HttpConstraint;
+import javax.servlet.annotation.ServletSecurity;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +24,7 @@ import bookshop.entity.Book;
  * Servlet implementation class BooksCRUDServlet
  */
 @WebServlet("/createData")
+@ServletSecurity(@HttpConstraint(rolesAllowed = { "Admin" }))
 public class BooksCRUDServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
      @Inject
