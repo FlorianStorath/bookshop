@@ -31,7 +31,7 @@ public class BooksCRUDServlet extends HttpServlet {
     
     @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String title = request.getParameter("title");
+    	    String title = request.getParameter("title");
 		String author = request.getParameter("author");
 		String yearParameter = request.getParameter("year");
 		int id;
