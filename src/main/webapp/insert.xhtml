@@ -1,0 +1,26 @@
+<html 
+   xmlns="https://www.w3.org/1999/xhtml" 
+   xmlns:c="http://java.sun.com/jsp/jstl/core"
+   xmlns:f="http://java.sun.com/jsf/core" 
+   xmlns:h="http://java.sun.com/jsf/html"
+>
+<head>
+
+</head>
+<h:body>
+	<h1><h:outputText id="pageTitle" value="Erzeugen mit JSF" /></h1>
+
+	<h:form>
+		Autor: <h:inputText id="author" value="#{eingabeBuch.author}" /><br/>
+		<h:message for="author"/><br/>
+		Titel: <h:inputText  id="title" value="#{eingabeBuch.title}" /><br/>
+		<h:message for="title"/><br/>
+		Erscheinungsjahr: <h:inputText  id="year" value="#{eingabeBuch.year}" /><br/>
+		<h:message for="year"/><br/>
+		
+		<h:commandButton action="#{insertBean.insert}" value="Einfügen" /><br/>
+	</h:form>
+
+</h:body>
+
+</html>

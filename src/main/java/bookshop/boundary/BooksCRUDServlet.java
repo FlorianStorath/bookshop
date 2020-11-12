@@ -44,7 +44,7 @@ public class BooksCRUDServlet extends HttpServlet {
 		}
 		Optional<Integer> max = booksData.getBooks().stream().map(Book::getId).max(Comparator.naturalOrder());
 		// Fahrzeug erstellen
-		Book book = new Book(max.orElse(0),title,author,year);
+		Book book = new Book(max.orElse(0)+1,title,author,year);
 		Set<ConstraintViolation<Book>> violations = validator.validate(book);
 		if(!violations.isEmpty()) {
 			// fachlicher Fehler, kein technischer Fehler

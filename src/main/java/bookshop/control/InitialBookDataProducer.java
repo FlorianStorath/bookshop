@@ -6,6 +6,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.New;
 import javax.enterprise.inject.Produces;
+import javax.inject.Named;
 
 import bookshop.entity.Book;
 
@@ -13,6 +14,7 @@ import bookshop.entity.Book;
 public class InitialBookDataProducer implements Serializable {
 	@Produces 
 	@ApplicationScoped
+	@Named("booksData")
 	public BooksData createInitData(@New BooksData booksData) {
 		booksData.getBooks().add(new Book(1,"Frankenstein","Mary Shelley",2010));
 		booksData.getBooks().add(new Book(2,"Shining","Stephen King", 2018));
