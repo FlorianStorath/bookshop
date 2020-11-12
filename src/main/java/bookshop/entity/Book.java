@@ -2,10 +2,22 @@ package bookshop.entity;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 public class Book implements Serializable {
+	@Pattern(regexp="[A-Z]")
 	private String title;
+	@Pattern(regexp="[A-Z].*[A-Z].*")
 	private String author;
+	@Max(2020)
+	@Min(1000)
 	private int year;
+	@NotNull
+	@Min(1)
 	private int id;
 	public Book(int id,String title, String author, int year) {
 		super();
