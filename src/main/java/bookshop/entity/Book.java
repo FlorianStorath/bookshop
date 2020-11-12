@@ -10,12 +10,16 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
+import ownValidators.AConstraint;
 @RequestScoped
 @Named("eingabeBuch")
 @Any
 public class Book implements Serializable {
+	
 	@Pattern(regexp="[A-Z]")
 	@Size(min=1, max=25, message="Wert muss zwischen {min} und {max} Zeichen lang sein.")
+	@AConstraint
 	private String title;
 	@Pattern(regexp="[A-Z].* [A-Z].*")
 	@Size(min=1, max=25, message="Wert muss zwischen {min} und {max} Zeichen lang sein.")

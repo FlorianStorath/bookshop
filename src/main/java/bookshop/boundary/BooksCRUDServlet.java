@@ -24,7 +24,7 @@ import bookshop.entity.Book;
  * Servlet implementation class BooksCRUDServlet
  */
 @WebServlet("/createData")
-@ServletSecurity(@HttpConstraint(rolesAllowed = { "Admin" }))
+//@ServletSecurity(@HttpConstraint(rolesAllowed = { "Admin" }))
 public class BooksCRUDServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
      @Inject

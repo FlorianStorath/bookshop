@@ -6,12 +6,15 @@ import java.util.Optional;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.annotation.HttpConstraint;
+import javax.servlet.annotation.ServletSecurity;
 
 import bookshop.control.BooksData;
 import bookshop.entity.Book;
 
 @RequestScoped
 @Named("insertBean")
+@ServletSecurity(@HttpConstraint(rolesAllowed = { "Admin" }))
 public class InsertBean {
 
 	@Inject
