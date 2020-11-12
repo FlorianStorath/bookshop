@@ -24,6 +24,7 @@ public class BooksDisplayServlet extends HttpServlet {
 @Override     
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		request.setAttribute("books", booksData.getBooks());
+		request.setAttribute("pageTitle", "Anzeige aller Bücher");
 		request.getRequestDispatcher("/displayData.jsp")
 			.forward(request, response);
 		

@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.LinkedList;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Produces;
-
 import bookshop.entity.Book;
-
+@BooksHandling
 public class BooksData implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final Collection<Book> books = new LinkedList<>();
 
 	// nur 1 Bestand in der Anwendung -> Singleton
